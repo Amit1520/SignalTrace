@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local configuration and data
+.env
+.env.*
+!.env.example
+*.secret
+*.credentials
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+/data/
+/data1/
+*.db
+*.db-*
+*.sqlite
+*.sqlite*
+*.wal
+*.shm
+*.evtx
+*.etl
+*checkpoint*.json
+*.log
+*sysmon*.xml
+*sysmon*.csv
+
+# Build artifacts
+dist/
+build/
+coverage/
+.coverage
+.coverage.*
+*.tsbuildinfo
+.tox/
+.nox/
+.hypothesis/
+.vite/
+.next/
+**/__pycache__/
+**/.cache/
+**/model-cache/
+**/models_cache/
+.ollama/
+ollama/
+
+# Downloaded model artifacts; keep only the model documentation
+/models/**
+!/models/README.md
+!/models/BOOTSTRAP.md
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
