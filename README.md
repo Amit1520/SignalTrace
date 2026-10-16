@@ -2,6 +2,12 @@
 
 SignalTrace is a local behavioral security prototype and investigation aid for Windows. It builds application behavior profiles from Sysmon telemetry and surfaces deviations as evidence for human review. It is not a malware classifier, antivirus, EDR, SIEM, or production-ready security product.
 
+## Demo
+
+[![Watch the SignalTrace demo](https://img.youtube.com/vi/wu0S98uP8aY/hqdefault.jpg)](https://youtu.be/wu0S98uP8aY)
+
+[Watch the demo on YouTube](https://youtu.be/wu0S98uP8aY).
+
 ## What it does
 
 - Reads existing Windows Sysmon Operational events through the Windows Event Log API. The collector handles process creation (event 1), network connection (event 3), and file creation (event 11).
