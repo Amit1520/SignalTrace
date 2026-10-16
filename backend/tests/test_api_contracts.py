@@ -492,4 +492,3 @@ def test_ingestion_status_interval_is_positive_integer(api_client) -> None:
 
     assert isinstance(body["current_interval_seconds"], int)
     assert body["current_interval_seconds"] >= 1
-

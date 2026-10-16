@@ -310,17 +310,17 @@ function formatProcessIdentity(node: ProcessNode): string {
   if (node.process_id !== null) {
     return `PID ${node.process_id}`;
   }
- 
+
   if (node.process_guid) {
     const guid = node.process_guid;
- 
+
     if (guid.length <= 16) {
       return `GUID ${guid}`;
     }
- 
+
     return `GUID ${guid.slice(0, 8)}…${guid.slice(-4)}`;
   }
- 
+
   return "Process identity unavailable";
 }
 

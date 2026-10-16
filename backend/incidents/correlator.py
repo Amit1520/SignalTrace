@@ -619,15 +619,15 @@ def _incident_severity(
 ) -> Severity:
     categories = {event.event_category for event in incident.timeline}
     severity_values = {event.severity for event in incident.timeline}
-    
+
     non_normal_categories = {
         event.event_category for event in incident.timeline if event.severity != Severity.NORMAL
     }
-    
+
     chain = incident.process_chain
     known_guids = {node.process_guid for node in chain if node.process_guid}
     parent_links = sum(
-        1 for node in chain 
+        1 for node in chain
         if node.parent_guid and node.parent_guid in known_guids
         and node.parent_guid != node.process_guid
     )
@@ -635,38 +635,38 @@ def _incident_severity(
     has_high = Severity.HIGH in severity_values
     has_medium = Severity.MEDIUM in severity_values
     has_low = Severity.LOW in severity_values
-    
+
     # 1. HIGH requires strong evidence + corroboration, or medium evidence + high diversity
     if has_high:
         if parent_links >= 1:
             return Severity.HIGH
         if len(non_normal_categories) >= 3:
             return Severity.HIGH
-            
+
     if has_medium and len(non_normal_categories) >= 3:
         return Severity.HIGH
-        
+
     # 2. MEDIUM represents meaningful correlated evidence without being critical
     if has_high:
         return Severity.MEDIUM
-        
+
     if has_medium:
         if parent_links >= 1 or len(non_normal_categories) >= 2:
             return Severity.MEDIUM
-            
+
     if has_low:
         if len(non_normal_categories) >= 3 or (len(non_normal_categories) >= 2 and parent_links >= 1):
             return Severity.MEDIUM
-            
+
     # 3. LOW represents limited/weak evidence
     if has_medium:
         return Severity.LOW
-        
+
     if has_low:
         if parent_links >= 1 or len(categories) >= 2:
             return Severity.LOW
         if incident.anomaly_count >= 2:
             return Severity.LOW
-            
+
     # 4. NORMAL for baseline/weakest scenarios
     return Severity.NORMAL

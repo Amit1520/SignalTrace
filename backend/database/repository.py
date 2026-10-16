@@ -70,7 +70,7 @@ class SQLiteRepository:
             # potentially expensive write operation.
             if repair_incident_timestamps:
                 self._repair_incident_timestamps()
-    
+
     def _ensure_anomalies_columns_exist(self) -> None:
         """Add missing columns to existing anomalies table for backward compatibility."""
         columns_to_check = [
@@ -82,7 +82,7 @@ class SQLiteRepository:
             ("model_version", "TEXT"),
             ("baseline_observation_count", "INTEGER"),
         ]
-        
+
         for column_name, column_type in columns_to_check:
             try:
                 # Check if column exists by trying to read from it

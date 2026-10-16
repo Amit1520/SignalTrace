@@ -56,7 +56,7 @@ def readiness() -> ReadinessStatus:
 def get_statistics() -> dict[str, object]:
     """
     Return aggregate statistics for the dashboard.
-    
+
     These are calculated directly from the database, not from paginated endpoints.
     """
     with SQLiteRepository(DatabaseSettings().path) as repository:
